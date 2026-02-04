@@ -1,26 +1,32 @@
 import asyncio
-import os
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-TOKEN = os.getenv("BOT_TOKEN")
-VIDEOGRAPH_USERNAME = "mark_em_wed"
+TOKEN = "8518754654:AAGjSkLYl1fo892mP_BNuy_cmrF4dB3t4xQ"
+VIDEOGRAPH_USERNAME = "yourusername"  # без @
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-keyboard = InlineKeyboardMarkup(inline_keyboard=[
+# Кнопки прайса
+price_keyboard = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(
-            text="🎬 Пакет 1 — Полный день (110 000₽)",
-            url=f"https://t.me/{VIDEOGRAPH_USERNAME}?text=Здравствуйте!%20Я%20выбрал%20Пакет%201%20—%20Полный%20день%20(110%20000₽).%20Хочу%20забронировать%20дату."
+            text="🎬 Reels — 15 000₽",
+            url=f"https://t.me/{VIDEOGRAPH_USERNAME}?text=Здравствуйте!%20Я%20выбрал%20тариф%20Reels%20—%2015%20000₽"
         )
     ],
     [
         InlineKeyboardButton(
-            text="🎞 Пакет 2 — Авторский фильм (85 000₽)",
-            url=f"https://t.me/{VIDEOGRAPH_USERNAME}?text=Здравствуйте!%20Я%20выбрал%20Пакет%202%20—%20Авторский%20фильм%20(85%20000₽).%20Хочу%20забронировать%20дату."
+            text="📢 Рекламное видео — 30 000₽",
+            url=f"https://t.me/{VIDEOGRAPH_USERNAME}?text=Здравствуйте!%20Я%20выбрал%20рекламное%20видео%20—%2030%20000₽"
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            text="💍 Свадебная съёмка — 70 000₽",
+            url=f"https://t.me/{VIDEOGRAPH_USERNAME}?text=Здравствуйте!%20Я%20выбрал%20свадебную%20съёмку%20—%2070%20000₽"
         )
     ]
 ])
@@ -28,12 +34,10 @@ keyboard = InlineKeyboardMarkup(inline_keyboard=[
 @dp.message(Command("start"))
 async def start(message: types.Message):
     await message.answer(
-        "Здравствуйте 👋\n"
-        "Вы находитесь в официальном боте видеографа Mark Em Wed 🎥\n\n"
-        "Выберите подходящий пакет съёмки ниже, "
-        "и вы сразу сможете написать мне для бронирования даты 👇\n\n"
-        "📌 Дата бронируется по предоплате 10 000₽",
-        reply_markup=keyboard
+        "Привет 👋\n"
+        "Я видеограф 🎥\n\n"
+        "Ниже ты можешь выбрать формат съёмки и сразу написать мне 👇",
+        reply_markup=price_keyboard
     )
 
 async def main():
