@@ -4,7 +4,7 @@ from aiogram.filters import Command
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 TOKEN = "8518754654:AAGjSkLYl1fo892mP_BNuy_cmrF4dB3t4xQ"
-VIDEOGRAPH_USERNAME = "yourusername"  # без @
+VIDEOGRAPH_USERNAME = "markemil_bot"
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
